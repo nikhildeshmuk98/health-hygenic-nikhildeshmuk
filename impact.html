@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact & Outcomes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e2a 0%, #10194d 50%, #0a0e2a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(74, 110, 224, 0.1);
+            filter: blur(40px);
+            animation: float 15s infinite linear;
+        }
+
+        .bg-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+
+        .bg-element:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -50px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(100, 149, 237, 0.5);
+        }
+
+        .back-btn i {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px rgba(100, 149, 237, 0.7);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ffffff, #a8c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #6495ed, transparent);
+            border-radius: 10px;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #e0e0e0;
+            text-shadow: 0 0 10px rgba(100, 149, 237, 0.5);
+            font-weight: 600;
+        }
+
+        /* Impact Stats */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .glass-card {
+            background: rgba(16, 18, 47, 0.4);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(100, 149, 237, 0.1), rgba(74, 110, 224, 0.05));
+            z-index: -1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(20, 25, 65, 0.5);
+            border: 1px solid rgba(100, 149, 237, 0.3);
+        }
+
+        .impact-stat {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 20px;
+        }
+
+        .impact-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(100, 149, 237, 0.7));
+            transition: all 0.3s ease;
+        }
+
+        .impact-stat:hover .impact-icon {
+            transform: scale(1.2);
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #4a6ee0, #8fb1ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(100, 149, 237, 0.3);
+        }
+
+        .impact-label {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Chart Section */
+        .charts-container {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .chart {
+            background: rgba(16, 18, 47, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .chart-bars {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 220px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .chart-bars::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .chart-bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90px;
+        }
+
+        .chart-bar {
+            width: 50px;
+            border-radius: 8px 8px 0 0;
+            background: linear-gradient(to top, #4a6ee0, #8fb1ff);
+            position: relative;
+            transition: height 1.5s ease;
+            box-shadow: 0 0 20px rgba(100, 149, 237, 0.6);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .chart-bar.before {
+            background: linear-gradient(to top, #ff6b6b, #ff9e9e);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .chart-label {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+        }
+
+        .chart-value {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+        }
+
+        .legend-color.before {
+            background: linear-gradient(135deg, #ff6b6b, #ff9e9e);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .legend-color.after {
+            background: linear-gradient(135deg, #4a6ee0, #8fb1ff);
+            box-shadow: 0 0 10px rgba(100, 149, 237, 0.5);
+        }
+
+        /* Impact Details */
+        .impact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .impact-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .point-icon {
+            font-size: 2.2rem;
+            margin-top: 5px;
+            color: #8fb1ff;
+            filter: drop-shadow(0 0 10px rgba(100, 149, 237, 0.7));
+            transition: all 0.3s ease;
+        }
+
+        .impact-point:hover .point-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .point-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .point-content p {
+            color: #c0c0c0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* Page Transition */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0e2a, #10194d);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .page-transition.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .transition-logo {
+            font-size: 4rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(100, 149, 237, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.8rem;
+            }
+            
+            .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .back-btn {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .container {
+                padding: 70px 15px 30px;
+            }
+            
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-number {
+                font-size: 2.5rem;
+            }
+            
+            .impact-icon {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+    </div>
+
+    <!-- Page Transition -->
+    <div class="page-transition">
+        <div class="transition-logo">📊</div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Impact & Outcome</h2>
+        
+        <div class="impact-stats">
+            <div class="glass-card impact-stat fade-in stagger-delay-1">
+                <div class="impact-icon">👥</div>
+                <div class="impact-number">250+</div>
+                <div class="impact-label">Villagers Reached</div>
+            </div>
+            <div class="glass-card impact-stat fade-in stagger-delay-2">
+                <div class="impact-icon">🏠</div>
+                <div class="impact-number">75</div>
+                <div class="impact-label">Households Visited</div>
+            </div>
+            <div class="glass-card impact-stat fade-in stagger-delay-3">
+                <div class="impact-icon">👨‍🎓</div>
+                <div class="impact-number">120</div>
+                <div class="impact-label">Students Trained</div>
+            </div>
+            <div class="glass-card impact-stat fade-in stagger-delay-4">
+                <div class="impact-icon">📈</div>
+                <div class="impact-number">80%</div>
+                <div class="impact-label">Adoption Rate</div>
+            </div>
+        </div>
+        
+        <div class="glass-card fade-in">
+            <h3>Before vs After Campaign</h3>
+            <p style="font-size: 1.1rem; line-height: 1.7; color: #d0d0d0; margin-bottom: 10px;">After the campaign, 80% of villagers adopted daily handwashing practices and reduced plastic waste usage by 45%. The awareness about mosquito-borne diseases increased significantly, leading to improved community health outcomes.</p>
+            
+            <div class="charts-container">
+                <div class="chart">
+                    <div class="chart-title">Handwashing Practices</div>
+                    <div class="chart-bars">
+                        <div class="chart-bar-container">
+                            <div class="chart-bar before" style="height: 40%;">
+                                <div class="chart-value">40%</div>
+                            </div>
+                            <div class="chart-label">Before</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar" style="height: 80%;">
+                                <div class="chart-value">80%</div>
+                            </div>
+                            <div class="chart-label">After</div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color before"></div>
+                            <span>Before Campaign</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color after"></div>
+                            <span>After Campaign</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart">
+                    <div class="chart-title">Plastic Waste Reduction</div>
+                    <div class="chart-bars">
+                        <div class="chart-bar-container">
+                            <div class="chart-bar before" style="height: 100%;">
+                                <div class="chart-value">100%</div>
+                            </div>
+                            <div class="chart-label">Before</div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar" style="height: 55%;">
+                                <div class="chart-value">55%</div>
+                            </div>
+                            <div class="chart-label">After</div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color before"></div>
+                            <span>Before Campaign</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color after"></div>
+                            <span>After Campaign</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="impact-details">
+            <div class="glass-card fade-in">
+                <div class="impact-point">
+                    <div class="point-icon">💧</div>
+                    <div class="point-content">
+                        <h4>Water Quality Improvement</h4>
+                        <p>Implementation of water purification techniques led to a 60% reduction in waterborne diseases within the community. Access to clean drinking water improved significantly.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card fade-in">
+                <div class="impact-point">
+                    <div class="point-icon">🦟</div>
+                    <div class="point-content">
+                        <h4>Disease Prevention</h4>
+                        <p>Mosquito control measures resulted in a 70% decrease in malaria and dengue cases reported in the village. Healthier environment with reduced disease vectors.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card fade-in">
+                <div class="impact-point">
+                    <div class="point-icon">♻️</div>
+                    <div class="point-content">
+                        <h4>Waste Management</h4>
+                        <p>Introduction of waste segregation and composting reduced landfill waste by 50% and created organic fertilizer for farming, promoting sustainable agriculture.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card fade-in">
+                <div class="impact-point">
+                    <div class="point-icon">👨‍👩‍👧‍👦</div>
+                    <div class="point-content">
+                        <h4>Community Engagement</h4>
+                        <p>Formation of community health committees ensures sustainability of hygiene practices beyond the campaign period, creating lasting positive impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page transition effect
+        window.addEventListener('load', function() {
+            const transition = document.querySelector('.page-transition');
+            setTimeout(() => {
+                transition.classList.add('fade-out');
+                setTimeout(() => {
+                    transition.style.display = 'none';
+                // Trigger animations for elements in view
+                    checkScroll();
+                }, 800);
+            }, 1000);
+            
+            // Animate chart bars
+            setTimeout(animateChartBars, 1200);
+        });
+
+        // Go back to home page
+        function goBack() {
+            const transition = document.querySelector('.page-transition');
+            transition.classList.remove('fade-out');
+            transition.style.display = 'flex';
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 800);
+        }
+
+        // Animate chart bars on scroll
+        function animateChartBars() {
+            const chartBars = document.querySelectorAll('.chart-bar');
+            chartBars.forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0%';
+                
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 300);
+            });
+        }
+
+        // Scroll animation for elements
+        function checkScroll() {
+            const elements = document.querySelectorAll('.glass-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                    
+                    // If it's a chart container, animate the bars
+                    if (element.querySelector('.chart-bars')) {
+                        const bars = element.querySelectorAll('.chart-bar');
+                        bars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                const height = bar.style.height;
+                                bar.style.height = '0%';
+                                
+                                setTimeout(() => {
+                                    bar.style.height = height;
+                                }, 300);
+                            }, index * 200);
+                        });
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('resize', checkScroll);
+    </script>
+</body>
+</html>

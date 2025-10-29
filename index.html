@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Hygiene Awareness - Kondapuram Village</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-dark: #0a0a1a;
+            --primary-blue: #1a1a2e;
+            --accent-blue: #16213e;
+            --accent-teal: #0d9488;
+            --light-teal: #14b8a6;
+            --glow-blue: #3b82f6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --nav-glow: rgba(59, 130, 246, 0.6);
+        }
+
+        /* Light Mode Variables */
+        .light-mode {
+            --primary-dark: #f0f4f8;
+            --primary-blue: #e3eaf2;
+            --accent-blue: #c9d9e9;
+            --accent-teal: #0d9488;
+            --light-teal: #14b8a6;
+            --glow-blue: #3b82f6;
+            --text-light: #1e293b;
+            --text-muted: #475569;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --nav-glow: rgba(59, 130, 246, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, #0f172a 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .light-mode body::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(20, 184, 166, 0.03) 0%, transparent 50%);
+        }
+
+        section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Enhanced Navigation - Fixed Alignment */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 0;
+            z-index: 1000;
+            background: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: background 0.5s ease;
+        }
+
+        .light-mode nav {
+            background: rgba(240, 244, 248, 0.9);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--light-teal), var(--glow-blue));
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+        }
+
+        .logo span {
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-teal);
+            box-shadow: 0 0 15px var(--nav-glow);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Settings Dropdown */
+        .settings-dropdown {
+            position: relative;
+        }
+
+        .settings-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .settings-btn:hover {
+            background: var(--accent-blue);
+            transform: rotate(30deg);
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 10px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .settings-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .settings-option {
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .settings-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .settings-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .language-options {
+            display: none;
+            flex-direction: column;
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid var(--light-teal);
+        }
+
+        .language-options.active {
+            display: flex;
+        }
+
+        .language-option {
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .language-option:hover {
+            background: rgba(20, 184, 166, 0.1);
+        }
+
+        .language-option.active {
+            background: rgba(20, 184, 166, 0.2);
+            color: var(--light-teal);
+            font-weight: 600;
+        }
+
+        /* Enhanced Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(59, 130, 246, 0.05));
+            z-index: -1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(20, 184, 166, 0.2);
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(20, 184, 166, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.6);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Home Section */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(26, 26, 46, 0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .light-mode #home {
+            background: linear-gradient(rgba(240, 244, 248, 0.9), rgba(227, 234, 242, 0.9)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin: 40px 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-item i {
+            font-size: 1.8rem;
+            color: var(--light-teal);
+        }
+
+        /* Map Card */
+        .map-card {
+            max-width: 520px;
+            margin: 18px auto;
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            transition: transform 160ms ease, box-shadow 160ms ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .map-card:active { transform: translateY(1px) scale(0.998); }
+        .map-card:focus { outline: 3px solid rgba(34,150,243,0.18); }
+
+        .map-item {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            flex: 1 1 auto;
+        }
+
+        .map-item i{
+            font-size: 22px;
+            color: var(--light-teal);
+            min-width: 28px;
+            text-align:center;
+        }
+
+        .map-text{
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .map-action{
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        .route-btn{
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(25,118,210,0.14);
+        }
+
+        .route-btn:active { transform: translateY(2px); }
+        .route-btn:focus { outline: 3px solid rgba(25,118,210,0.18); }
+
+        .status{
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--light-teal);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Project Details */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .topic-item:hover {
+            transform: translateY(-5px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 2.2rem;
+            color: var(--light-teal);
+            filter: drop-shadow(0 0 5px rgba(20, 184, 166, 0.5));
+        }
+
+        .steps-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto;
+        }
+
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 25px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--light-teal), var(--glow-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 70px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--light-teal), var(--glow-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+            font-size: 1.2rem;
+        }
+
+        /* Gallery */
+        .gallery-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 280px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 26, 0.85);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--light-teal);
+            color: var(--primary-dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--light-teal);
+            transform: scale(1.2);
+        }
+
+        /* Team */
+        .guide-card {
+            text-align: center;
+            padding: 40px;
+            margin-bottom: 50px;
+            transition: transform 0.4s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .guide-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 25px;
+            border: 4px solid var(--light-teal);
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .guide-card:hover .guide-photo {
+            border-color: var(--glow-blue);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 25px;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 25px;
+            border: 3px solid var(--light-teal);
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover .team-photo {
+            border-color: var(--glow-blue);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Impact */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 30px 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .impact-stat:hover {
+            transform: translateY(-10px);
+        }
+
+        .impact-icon {
+            font-size: 3.5rem;
+            color: var(--light-teal);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(20, 184, 166, 0.5));
+        }
+
+        .impact-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--light-teal);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        .impact-label {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .chart {
+            height: 250px;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            position: relative;
+            border: 1px solid var(--glass-border);
+        }
+
+        .chart-bar {
+            flex: 1;
+            margin: 0 8px;
+            background: linear-gradient(to top, var(--light-teal), var(--glow-blue));
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            box-shadow: 0 -5px 15px rgba(20, 184, 166, 0.3);
+            transition: height 1s ease;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Feedback */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+        }
+
+        .testimonial {
+            padding: 30px;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-8px);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-size: 5rem;
+            color: var(--light-teal);
+            opacity: 0.3;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--light-teal);
+        }
+
+        .author-info h4 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--light-teal);
+            font-weight: 500;
+        }
+
+        /* Enhanced Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--light-teal), var(--glow-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+        }
+
+        /* Enhanced Social Media Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.3rem;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(20, 184, 166, 0.5);
+        }
+
+        .social-icon:hover::before {
+            left: 100%;
+        }
+
+        .social-icon.github:hover {
+            background: #333;
+            color: white;
+        }
+
+        .social-icon.linkedin:hover {
+            background: #0077b5;
+            color: white;
+        }
+
+        .social-icon.whatsapp:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .social-icon.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-teal);
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(20, 184, 166, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.6);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Background Icons */
+        .bg-icon {
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.03;
+            z-index: -1;
+            filter: blur(1px);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .footer-logo-icon {
+            background: linear-gradient(135deg, var(--light-teal), var(--glow-blue));
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+        }
+
+        .footer-logo span {
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .footer-social a:hover {
+            background: linear-gradient(135deg, var(--light-teal), var(--glow-blue));
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(20, 184, 166, 0.5);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1100px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+            
+            h2 {
+                font-size: 2.4rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 26, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 25px 0;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.4s ease;
+                border-bottom: 1px solid var(--glass-border);
+                backdrop-filter: blur(15px);
+            }
+            
+            .light-mode .nav-links {
+                background: rgba(240, 244, 248, 0.95);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .project-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            .nav-links a {
+                width: 80%;
+                justify-content: center;
+            }
+
+            .carousel-slide {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 80px 15px;
+            }
+            
+            .glass-card {
+                padding: 25px;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .map-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .map-action {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hand-holding-water"></i>
+                </div>
+                <span>HealthHygiene</span>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="home.html"><i class="fas fa-home"></i> <span data-i18n="home">Home</span></a>
+                <a href="details.html"><i class="fas fa-scroll"></i> <span data-i18n="details">Details</span></a>
+                <a href="gallery.html"><i class="fas fa-images"></i> <span data-i18n="gallery">Gallery</span></a>
+                <a href="team.html"><i class="fas fa-users"></i> <span data-i18n="team">Team</span></a>
+                <a href="impact.html"><i class="fas fa-chart-line"></i> <span data-i18n="impact">Impact</span></a>
+                <a href="feedback.html"><i class="fas fa-comments"></i> <span data-i18n="feedback">Feedback</span></a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> <span data-i18n="contact">Contact</span></a>
+
+                <!-- Settings Dropdown -->
+                <div class="settings-dropdown">
+                    <div class="settings-btn">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="settings-menu">
+                        <div class="settings-option" id="language-toggle">
+                            <i class="fas fa-language"></i>
+                            <span data-i18n="language">Language</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="language-options">
+                            <div class="language-option" data-lang="en">English</div>
+                            <div class="language-option" data-lang="te">తెలుగు (Telugu)</div>
+                        </div>
+                        <div class="settings-option" id="theme-toggle">
+                            <i class="fas fa-palette"></i>
+                            <span data-i18n="light_mode">Light Mode</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="bg-icon floating" style="top: 10%; left: 5%;">🧼</div>
+        <div class="bg-icon floating" style="top: 20%; right: 10%; animation-delay: 1s;">🩺</div>
+        <div class="bg-icon floating" style="bottom: 15%; left: 15%; animation-delay: 2s;">🚰</div>
+        <div class="bg-icon floating" style="bottom: 25%; right: 20%; animation-delay: 1.5s;">💧</div>
+        
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 data-i18n="main_title">Health & Hygiene Awareness</h1>
+                <p data-i18n="main_description">This Community Service Project was conducted to spread awareness on health and hygiene practices among the residents of Kondapuram village, creating lasting impact through education and engagement.</p>
+                
+                <div class="project-info">
+                    <div class="map-card" id="kondapuramCard" role="button" tabindex="0" aria-pressed="false"
+                        title="Show route to Kondapuram Village">
+                        <div class="map-item">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span class="map-text" data-i18n="village_location">Kondapuram Village, Andhra Pradesh</span>
+                        </div>
+                        <div class="map-action">
+                            <button id="openRouteBtn" class="route-btn" data-i18n="show_route">Show route in Google Maps</button>
+                            <div id="status" class="status" aria-live="polite" hidden></div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span data-i18n="project_dates">July 2024 – August 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Updated button to link to details.html -->
+                <a href="details.html" class="btn" data-i18n="explore_project">Explore Project</a>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">250+</div>
+                        <div class="stat-label" data-i18n="villagers_reached">Villagers Reached</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label" data-i18n="awareness_sessions">Awareness Sessions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150</div>
+                        <div class="stat-label" data-i18n="hygiene_kits">Hygiene Kits Distributed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section id="details">
+        <div class="container">
+            <h2 data-i18n="project_details">Project Details</h2>
+            
+            <div class="glass-card fade-in">
+                <h3 data-i18n="objective">Objective</h3>
+                <p data-i18n="objective_description">To educate villagers about personal hygiene, handwashing, waste management, and maintaining clean surroundings through interactive sessions and practical demonstrations.</p>
+            </div>
+            
+            <div class="glass-card fade-in">
+                <h3 data-i18n="topics_covered">Topics Covered</h3>
+                <div class="topics-grid">
+                    <div class="topic-item">
+                        <div class="topic-icon">🧼</div>
+                        <div data-i18n="handwashing">Handwashing steps & importance</div>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">💧</div>
+                        <div data-i18n="clean_water">Clean drinking water importance</div>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">🗑️</div>
+                        <div data-i18n="waste_management">Waste disposal & plastic reduction</div>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">🍽️</div>
+                        <div data-i18n="food_hygiene">Food hygiene & safety practices</div>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">🦟</div>
+                        <div data-i18n="mosquito_prevention">Mosquito prevention & health tips</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card fade-in">
+                <h3 data-i18n="steps_followed">Steps Followed</h3>
+                <div class="steps-timeline">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4 data-i18n="step1_title">Surveyed local awareness level</h4>
+                        <p data-i18n="step1_description">Conducted initial surveys to understand the current hygiene practices and awareness levels in the village through door-to-door visits and questionnaires.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4 data-i18n="step2_title">Prepared posters and leaflets</h4>
+                        <p data-i18n="step2_description">Created educational materials in the local language with visual aids for better understanding, using culturally appropriate illustrations and simple language.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4 data-i18n="step3_title">Conducted awareness sessions</h4>
+                        <p data-i18n="step3_description">Organized interactive sessions in schools and community halls to demonstrate proper hygiene practices through role-plays, demonstrations, and group activities.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4 data-i18n="step4_title">Distributed hygiene kits</h4>
+                        <p data-i18n="step4_description">Provided essential hygiene items including soap, sanitizer, toothpaste, and informational pamphlets to villagers with proper usage instructions.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h4 data-i18n="step5_title">Follow-up visit for feedback</h4>
+                        <p data-i18n="step5_description">Returned to the village to assess the impact of our program and gather feedback for future improvements, measuring behavioral changes and knowledge retention.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 data-i18n="gallery">Gallery</h2>
+            
+            <div class="gallery-carousel fade-in">
+                <div class="carousel-container" id="carousel">
+                    <div class="carousel-slide">
+                        <div class="gallery-item">
+                            <img src="images/group boys.jpg" alt="Handwashing demonstration">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/group2.jpg" alt="Community session">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/group 3.jpg" alt="School session">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/group 4.jpg" alt="Distribution of kits">
+                           
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="gallery-item">
+                            <img src="images/group 5.jpg" alt="Team photo">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/group 6.jpg" alt="Cleanliness drive">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/group 10.jpg" alt="Water purification">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/group boys.jpg" alt="Health checkup">
+                          
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                    <div class="indicator active"></div>
+                    <div class="indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <h2 data-i18n="our_team">Our Team</h2>
+            
+            <!-- Guide Card -->
+            <div class="glass-card guide-card fade-in">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Rajesh Kumar" class="guide-photo">
+                <h3>Mr. M. SIVAPRATAPREDDY</h3>
+                <p data-i18n="project_guide">Project Guide & Faculty Coordinator</p>
+                <p data-i18n="guide_description">Provided expert guidance and mentorship throughout the project, ensuring effective implementation of health and hygiene initiatives.</p>
+            </div>
+            
+            <!-- Team Members -->
+            <div class="team-grid">
+                <div class="glass-card team-card fade-in">
+                    <img src="images/himaja.png" alt="K.Himaja" class="team-photo">
+                    <h3>K.Himaja</h3>
+                    <p data-i18n="project_leader">Project Leader</p>
+                    <p>Roll No:22kb1a1219</p>
+                    <p data-i18n="himaja_role">Organized and led all project activities with strategic planning</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/govardhan.png" alt="D.Govardhan" class="team-photo">
+                    <h3> D.Govardhan</h3>
+                    <p data-i18n="awareness_coordinator">Awareness Coordinator</p>
+                    <p>Roll No: 22KB1A1213</p>
+                    <p data-i18n="govardhan_role">Designed and conducted engaging awareness sessions</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/neha.png" alt="G.Neha" class="team-photo">
+                    <h3>G.Neha</h3>
+                    <p data-i18n="logistics_manager">Logistics Manager</p>
+                    <p>Roll No: 22KB1A1214</p>
+                    <p data-i18n="neha_role">Managed resources and distribution efficiently</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/mohansai.png" alt="mohansai" class="team-photo">
+                    <h3>G.Mohan Sai</h3>
+                    <p data-i18n="community_liaison">Community Liaison</p>
+                    <p>Roll No: 22KB1A1215</p>
+                    <p data-i18n="mohansai_role">Built strong relationships with village leaders</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/smiley.png" alt="J.Sumanth" class="team-photo">
+                    <h3>J.Sumanth</h3>
+                    <p data-i18n="research_analyst">Research Analyst</p>
+                    <p>Roll No: 22KB1A1216</p>
+                    <p data-i18n="sumanth_role">Conducted surveys and data analysis</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/vibhav.png" alt="Y.Narshimalu" class="team-photo">
+                    <h3>Y.Narashimalu</h3>
+                    <p data-i18n="content_creator">Content Creator</p>
+                    <p>Roll No: 22KB1A1264</p>
+                    <p data-i18n="narashimalu_role">Developed educational materials and presentations</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/manohar.png" alt="K.Manohar" class="team-photo">
+                    <h3>K.Manohar</h3>
+                    <p data-i18n="photographer">Photographer & Videographer</p>
+                    <p>Roll No: 22KB1A1217</p>
+                    <p data-i18n="manohar">Documented project activities and created visual content</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/nikhildeshmuk.png" alt="D.Nikhil" class="team-photo">
+                    <h3>D.Nikhil</h3>
+                    <p data-i18n="volunteer_coordinator">Volunteer Schedules</p>
+                    <p>Roll No: 22KB1A1212</p>
+                    <p data-i18n="nikhil_role">Managed volunteer schedules and responsibilities</p>
+                </div>
+                <div class="glass-card team-card fade-in">
+                    <img src="images/srivani.png" alt="K.Srivani" class="team-photo">
+                    <h3>K.Srivani</h3>
+                    <p data-i18n="translator">Translator & Local Coordinator</p>
+                    <p>Roll No: 22KB1A1220</p>
+                    <p data-i18n="srivani_role">Facilitated communication with local community</p>
+                </div>
+                 <div class="glass-card team-card fade-in">
+                    <img src="images/sheshank.png" alt="K.shasank" class="team-photo">
+                    <h3>K.Shasank</h3>
+                    <p data-i18n="translator">Translator & Local Coordinator</p>
+                    <p>Roll No: 22KB1A1221</p>
+                    <p data-i18n="shasank_role">Facilitated communication with local community</p>
+                </div>
+                 <div class="glass-card team-card fade-in">
+                    <img src="images/sahithi.png" alt="K.Sahithi" class="team-photo">
+                    <h3>K.Sahithi</h3>
+                    <p data-i18n="translator">Translator & Local Coordinator</p>
+                    <p>Roll No: 22KB1A1222</p>
+                    <p data-i18n="sahithi_role">Facilitated communication with local community</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact">
+        <div class="container">
+            <h2 data-i18n="impact_outcome">Impact & Outcome</h2>
+            
+            <div class="impact-stats">
+                <div class="glass-card impact-stat fade-in">
+                    <div class="impact-icon">👥</div>
+                    <div class="impact-number">250+</div>
+                    <div class="impact-label" data-i18n="villagers_reached">Villagers Reached</div>
+                </div>
+                <div class="glass-card impact-stat fade-in">
+                    <div class="impact-icon">🏠</div>
+                    <div class="impact-number">75</div>
+                    <div class="impact-label" data-i18n="households_visited">Households Visited</div>
+                </div>
+                <div class="glass-card impact-stat fade-in">
+                    <div class="impact-icon">👨‍🎓</div>
+                    <div class="impact-number">120</div>
+                    <div class="impact-label" data-i18n="students_trained">Students Trained</div>
+                </div>
+                <div class="glass-card impact-stat fade-in">
+                    <div class="impact-icon">📈</div>
+                    <div class="impact-number">80%</div>
+                    <div class="impact-label" data-i18n="adoption_rate">Adoption Rate</div>
+                </div>
+            </div>
+            
+            <div class="glass-card fade-in">
+                <h3 data-i18n="before_after">Before vs After Campaign</h3>
+                <p data-i18n="impact_description">After the campaign, 80% of villagers adopted daily handwashing practices and reduced plastic waste usage by 45%. The awareness about mosquito-borne diseases increased significantly.</p>
+                
+                <div class="charts-container">
+                    <div class="chart">
+                        <div class="chart-bar" style="height: 40%;">
+                            <div class="chart-label" data-i18n="before">Before</div>
+                        </div>
+                        <div class="chart-bar" style="height: 80%;">
+                            <div class="chart-label" data-i18n="after">After</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback">
+        <div class="container">
+            <h2 data-i18n="feedback_testimonials">Feedback & Testimonials</h2>
+            
+            <div class="testimonials">
+                <div class="glass-card testimonial fade-in">
+                    <div class="testimonial-text" data-i18n="testimonial1">
+                        The program helped us understand the importance of clean water and proper waste disposal. Our children are now practicing handwashing regularly, and we've noticed fewer illnesses in our family.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Lakshmi" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Lakshmi</h4>
+                            <p data-i18n="kondapuram_villager">Kondapuram Villager</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card testimonial fade-in">
+                    <div class="testimonial-text" data-i18n="testimonial2">
+                        Nikhil's team demonstrated excellent community engagement and created meaningful impact through their well-planned hygiene awareness campaign. The practical approach made complex concepts easy to understand.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Dr. Sharma" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Dr. R. Sharma</h4>
+                            <p data-i18n="faculty_coordinator">Faculty Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card testimonial fade-in">
+                    <div class="testimonial-text" data-i18n="testimonial3">
+                        We've noticed a significant improvement in cleanliness around the village after the awareness sessions. The team's efforts have made a real difference in community health and environmental consciousness.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Raju" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Raju</h4>
+                            <p data-i18n="village_leader">Village Leader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 data-i18n="contact_about">Contact / About Me</h2>
+            
+            <div class="contact-content">
+                <div class="glass-card fade-in">
+                    <h3 data-i18n="about_me">About Me</h3>
+                    <p data-i18n="about_description">Passionate about using technology to create social impact through real-world projects and community work. I believe in the power of education and awareness to transform communities.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h4>Nikhil Dandolu</h4>
+                                <p data-i18n="student_info">B.Tech IT Student | NBKR Institute of Science & Technology</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 data-i18n="email">Email</h4>
+                                <p>nikhildeshmuk98@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 data-i18n="phone">Phone</h4>
+                                <p>+91 6309872249</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4 data-i18n="portfolio">Portfolio</h4>
+                                <p>portifolio-nikhil.vercel.app</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Social Media Icons -->
+                    <div class="social-icons">
+                        <a href="https://github.com/nikhildeshmuk98" class="social-icon github" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/in/nikhil-dandolu-a9122b33b" 
+                            class="social-icon linkedin" 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://wa.me/916309872249" 
+                            class="social-icon whatsapp" 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nikhil_deshmuk_14" 
+                            class="social-icon instagram" 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="glass-card fade-in">
+                    <form action="https://formspree.io/f/xblawdbq" method="POST">
+                        <h2>📩 <span data-i18n="get_in_touch">Get in Touch</span></h2>
+                        <p data-i18n="form_description">I'd love to hear from you. Send me a message!</p>
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" data-i18n="name_placeholder" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" data-i18n="email_placeholder" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter subject" data-i18n="subject_placeholder">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="message" name="message" class="form-control" placeholder="Type your message..." data-i18n="message_placeholder" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span data-i18n="send_message">Send Message</span> <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-hand-holding-water"></i>
+                    </div>
+                    <span>HealthHygiene</span>
+                </div>
+               
+                <div class="social-icons">
+                    <a href="https://github.com/nikhildeshmuk98" class="social-icon github" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://in.linkedin.com/in/nikhil-dandolu-a9122b33b" 
+                        class="social-icon linkedin" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://wa.me/916309872249" 
+                        class="social-icon whatsapp" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/nikhil_deshmuk_14" 
+                        class="social-icon instagram" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <p>&copy; 2024 Health & Hygiene Awareness Project. All rights reserved. | <span data-i18n="footer_text">Making a difference through community engagement</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                // Navigation
+                home: "Home",
+                details: "Details",
+                gallery: "Gallery",
+                team: "Team",
+                impact: "Impact",
+                feedback: "Feedback",
+                contact: "Contact",
+                language: "Language",
+                light_mode: "Light Mode",
+                
+                // Home section
+                main_title: "Health & Hygiene Awareness",
+                main_description: "This Community Service Project was conducted to spread awareness on health and hygiene practices among the residents of Kondapuram village, creating lasting impact through education and engagement.",
+                village_location: "Kondapuram Village, Andhra Pradesh",
+                show_route: "Show route in Google Maps",
+                project_dates: "July 2024 – August 2024",
+                explore_project: "Explore Project",
+                villagers_reached: "Villagers Reached",
+                awareness_sessions: "Awareness Sessions",
+                hygiene_kits: "Hygiene Kits Distributed",
+                
+                // Details section
+                project_details: "Project Details",
+                objective: "Objective",
+                objective_description: "To educate villagers about personal hygiene, handwashing, waste management, and maintaining clean surroundings through interactive sessions and practical demonstrations.",
+                topics_covered: "Topics Covered",
+                handwashing: "Handwashing steps & importance",
+                clean_water: "Clean drinking water importance",
+                waste_management: "Waste disposal & plastic reduction",
+                food_hygiene: "Food hygiene & safety practices",
+                mosquito_prevention: "Mosquito prevention & health tips",
+                steps_followed: "Steps Followed",
+                step1_title: "Surveyed local awareness level",
+                step1_description: "Conducted initial surveys to understand the current hygiene practices and awareness levels in the village through door-to-door visits and questionnaires.",
+                step2_title: "Prepared posters and leaflets",
+                step2_description: "Created educational materials in the local language with visual aids for better understanding, using culturally appropriate illustrations and simple language.",
+                step3_title: "Conducted awareness sessions",
+                step3_description: "Organized interactive sessions in schools and community halls to demonstrate proper hygiene practices through role-plays, demonstrations, and group activities.",
+                step4_title: "Distributed hygiene kits",
+                step4_description: "Provided essential hygiene items including soap, sanitizer, toothpaste, and informational pamphlets to villagers with proper usage instructions.",
+                step5_title: "Follow-up visit for feedback",
+                step5_description: "Returned to the village to assess the impact of our program and gather feedback for future improvements, measuring behavioral changes and knowledge retention.",
+                
+                // Gallery section
+                handwashing_demo: "Handwashing Demonstration",
+                handwashing_caption: "Teaching proper handwashing techniques to village children",
+                community_session: "Community Session",
+                community_caption: "Engaging with villagers about hygiene practices",
+                school_session: "School Session",
+                school_caption: "Interactive session with school children",
+                kit_distribution: "Kit Distribution",
+                kit_caption: "Distributing hygiene kits to villagers",
+                team_photo: "Team Photo",
+                team_caption: "Our dedicated team of volunteers",
+                cleanliness_drive: "Cleanliness Drive",
+                cleanliness_caption: "Community participation in cleanliness activities",
+                water_purification: "Water Purification",
+                water_caption: "Demonstrating water purification methods",
+                health_checkup: "Health Checkup",
+                health_caption: "Basic health checkup for villagers",
+                
+                // Team section
+                our_team: "Our Team",
+                project_guide: "Project Guide & Faculty Coordinator",
+                guide_description: "Provided expert guidance and mentorship throughout the project, ensuring effective implementation of health and hygiene initiatives.",
+                project_leader: "Project Leader",
+                nikhil_role: "Organized and led all project activities with strategic planning",
+                awareness_coordinator: "Awareness Coordinator",
+                priya_role: "Designed and conducted engaging awareness sessions",
+                logistics_manager: "Logistics Manager",
+                rahul_role: "Managed resources and distribution efficiently",
+                community_liaison: "Community Liaison",
+                anjali_role: "Built strong relationships with village leaders",
+                research_analyst: "Research Analyst",
+                vikram_role: "Conducted surveys and data analysis",
+                content_creator: "Content Creator",
+                sneha_role: "Developed educational materials and presentations",
+                photographer: "Photographer & Videographer",
+                arun_role: "Documented project activities and created visual content",
+                volunteer_coordinator: "Volunteer Coordinator",
+                divya_role: "Managed volunteer schedules and responsibilities",
+                translator: "Translator & Local Coordinator",
+                kiran_role: "Facilitated communication with local community",
+                
+                // Impact section
+                impact_outcome: "Impact & Outcome",
+                households_visited: "Households Visited",
+                students_trained: "Students Trained",
+                adoption_rate: "Adoption Rate",
+                before_after: "Before vs After Campaign",
+                impact_description: "After the campaign, 80% of villagers adopted daily handwashing practices and reduced plastic waste usage by 45%. The awareness about mosquito-borne diseases increased significantly.",
+                before: "Before",
+                after: "After",
+                
+                // Feedback section
+                feedback_testimonials: "Feedback & Testimonials",
+                testimonial1: "The program helped us understand the importance of clean water and proper waste disposal. Our children are now practicing handwashing regularly, and we've noticed fewer illnesses in our family.",
+                kondapuram_villager: "Kondapuram Villager",
+                testimonial2: "Nikhil's team demonstrated excellent community engagement and created meaningful impact through their well-planned hygiene awareness campaign. The practical approach made complex concepts easy to understand.",
+                faculty_coordinator: "Faculty Coordinator",
+                testimonial3: "We've noticed a significant improvement in cleanliness around the village after the awareness sessions. The team's efforts have made a real difference in community health and environmental consciousness.",
+                village_leader: "Village Leader",
+                
+                // Contact section
+                contact_about: "Contact / About Me",
+                about_me: "About Me",
+                about_description: "Passionate about using technology to create social impact through real-world projects and community work. I believe in the power of education and awareness to transform communities.",
+                student_info: "B.Tech IT Student | NBKR Institute of Science & Technology",
+                email: "Email",
+                phone: "Phone",
+                portfolio: "Portfolio",
+                get_in_touch: "Get in Touch",
+                form_description: "I'd love to hear from you. Send me a message!",
+                name_placeholder: "Enter your name",
+                email_placeholder: "Enter your email",
+                subject_placeholder: "Enter subject",
+                message_placeholder: "Type your message...",
+                send_message: "Send Message",
+                
+                // Footer
+                footer_text: "Making a difference through community engagement"
+            },
+            te: {
+                // Navigation
+                home: "హోమ్",
+                details: "వివరాలు",
+                gallery: "గ్యాలరీ",
+                team: "టీమ్",
+                impact: "ప్రభావం",
+                feedback: "ఫీడ్బ్యాక్",
+                contact: "సంప్రదించండి",
+                language: "భాష",
+                light_mode: "లైట్ మోడ్",
+                
+                // Home section
+                main_title: "ఆరోగ్యం & పరిశుభ్రత అవగాహన",
+                main_description: "కొండాపురం గ్రామంలోని నివాసుల మధ్య ఆరోగ్యం మరియు పరిశుభ్రత పద్ధతుల గురించి అవగాహన పెంచడానికి ఈ కమ్యూనిటీ సర్వీస్ ప్రాజెక్ట్ నిర్వహించబడింది, ఇది విద్య మరియు నిశ్చితార్థం ద్వారా స్థిరమైన ప్రభావాన్ని సృష్టిస్తుంది.",
+                village_location: "కొండాపురం గ్రామం, ఆంధ్ర ప్రదేశ్",
+                show_route: "గూగుల్ మ్యాప్స్లో మార్గం చూపించు",
+                project_dates: "జూలై 2024 – ఆగస్టు 2024",
+                explore_project: "ప్రాజెక్ట్ను అన్వేషించండి",
+                villagers_reached: "గ్రామవాసులు చేరుకున్నారు",
+                awareness_sessions: "అవగాహన సెషన్లు",
+                hygiene_kits: "పరిశుభ్రత కిట్లు పంపిణీ చేయబడ్డాయి",
+                
+                // Details section
+                project_details: "ప్రాజెక్ట్ వివరాలు",
+                objective: "లక్ష్యం",
+                objective_description: "వ్యక్తిగత పరిశుభ్రత, చేతులు కడుకోవడం, వేస్ట్ మేనేజ్మెంట్ మరియు శుభ్రమైన పరిసరాలను నిర్వహించడం గురించి గ్రామవాసులకు ఇంటరాక్టివ్ సెషన్లు మరియు ప్రాక్టికల్ డెమోల ద్వారా విద్య ఇవ్వడం.",
+                topics_covered: "కవర్ చేయబడిన అంశాలు",
+                handwashing: "చేతులు కడుకోవడం దశలు & ప్రాముఖ్యత",
+                clean_water: "శుభ్రమైన త్రాగునీటి ప్రాముఖ్యత",
+                waste_management: "వేస్ట్ డిస్పోజల్ & ప్లాస్టిక్ తగ్గింపు",
+                food_hygiene: "ఆహార పరిశుభ్రత & భద్రతా పద్ధతులు",
+                mosquito_prevention: "డాంగ్యు నివారణ & ఆరోగ్య చిట్కాలు",
+                steps_followed: "అనుసరించిన దశలు",
+                step1_title: "స్థానిక అవగాహన స్థాయిని సర్వే చేశారు",
+                step1_description: "గ్రామంలో ప్రస్తుత పరిశుభ్రత పద్ధతులు మరియు అవగాహన స్థాయిలను అర్థం చేసుకోవడానికి ఇంటింటికి సందర్శనలు మరియు ప్రశ్నావళుల ద్వారా ప్రారంభ సర్వేలను నిర్వహించారు.",
+                step2_title: "పోస్టర్లు మరియు లీఫ్లెట్లను సిద్ధం చేశారు",
+                step2_description: "మెరుగైన అవగాహన కోసం విజువల్ ఎయిడ్స్తో స్థానిక భాషలో విద్యాపరమైన పదార్థాలను సృష్టించారు, సాంస్కృతికంగా సరైన ఇలస్ట్రేషన్లు మరియు సరళమైన భాషను ఉపయోగించారు.",
+                step3_title: "అవగాహన సెషన్లను నిర్వహించారు",
+                step3_description: "పాఠశాలలు మరియు కమ్యూనిటీ హాల్లలో సరైన పరిశుభ్రత పద్ధతులను ప్రదర్శించడానికి రోల్-ప్లేలు, ప్రదర్శనలు మరియు గ్రూప్ కార్యకలాపాల ద్వారా ఇంటరాక్టివ్ సెషన్లను నిర్వహించారు.",
+                step4_title: "పరిశుభ్రత కిట్లను పంపిణీ చేశారు",
+                step4_description: "సబ్బు, సానిటైజర్, టూత్పేస్ట్ మరియు సమాచార బుక్లెట్లతో సహా అవసరమైన పరిశుభ్రత వస్తువులను సరైన ఉపయోగం సూచనలతో గ్రామవాసులకు అందించారు.",
+                step5_title: "ఫీడ్బ్యాక్ కోసం ఫాలో-అప్ సందర్శన",
+                step5_description: "మా ప్రోగ్రామ్ యొక్క ప్రభావాన్ని అంచనా వేయడానికి మరియు భవిష్యత్తు మెరుగుదలల కోసం ఫీడ్బ్యాక్ను సేకరించడానికి గ్రామానికి తిరిగి వచ్చారు, ప్రవర్తనా మార్పులు మరియు జ్ఞానం నిలుపుదలను కొలిచారు.",
+                
+                // Gallery section
+                handwashing_demo: "చేతులు కడుకోవడం ప్రదర్శన",
+                handwashing_caption: "గ్రామం పిల్లలకు సరైన చేతులు కడుకోవడం పద్ధతులను నేర్పుతున్నారు",
+                community_session: "కమ్యూనిటీ సెషన్",
+                community_caption: "పరిశుభ్రత పద్ధతుల గురించి గ్రామవాసులతో నిశ్చితార్థం",
+                school_session: "పాఠశాల సెషన్",
+                school_caption: "పాఠశాల పిల్లలతో ఇంటరాక్టివ్ సెషన్",
+                kit_distribution: "కిట్ పంపిణీ",
+                kit_caption: "గ్రామవాసులకు పరిశుభ్రత కిట్లను పంపిణీ చేయడం",
+                team_photo: "టీమ్ ఫోటో",
+                team_caption: "మా అంకితభావంతో కూడిన స్వచ్ఛందకారుల బృందం",
+                cleanliness_drive: "పరిశుభ్రత డ్రైవ్",
+                cleanliness_caption: "పరిశుభ్రత కార్యకలాపాలలో కమ్యూనిటీ పాల్గొనడం",
+                water_purification: "నీటి శుద్ధీకరణ",
+                water_caption: "నీటి శుద్ధీకరణ పద్ధతులను ప్రదర్శిస్తున్నారు",
+                health_checkup: "ఆరోగ్య తనిఖీ",
+                health_caption: "గ్రామవాసులకు ప్రాథమిక ఆరోగ్య తనిఖీ",
+                
+                // Team section
+                our_team: "మా బృందం",
+                project_guide: "ప్రాజెక్ట్ గైడ్ & ఫ్యాకల్టీ కోఆర్డినేటర్",
+                guide_description: "ప్రాజెక్ట్ అంతటా నిపుణ మార్గదర్శకత్వం మరియు మెంటర్షిప్ను అందించారు, ఆరోగ్యం మరియు పరిశుభ్రత ఉద్యమాల ప్రభావవంతమైన అమలును నిర్ధారించారు.",
+                project_leader: "ప్రాజెక్ట్ లీడర్",
+                nikhil_role: "వ్యూహాత్మక ప్లానింగ్తో అన్ని ప్రాజెక్ట్ కార్యకలాపాలను నిర్వహించారు మరియు నడిపారు",
+                awareness_coordinator: "అవగాహన కోఆర్డినేటర్",
+                priya_role: "ఆకర్షణీయమైన అవగాహన సెషన్లను రూపకల్పన చేశారు మరియు నిర్వహించారు",
+                logistics_manager: "లాజిస్టిక్స్ మేనేజర్",
+                rahul_role: "వనరులు మరియు పంపిణీని సమర్థవంతంగా నిర్వహించారు",
+                community_liaison: "కమ్యూనిటీ లియాజన్",
+                anjali_role: "గ్రామ నాయకులతో బలమైన సంబంధాలను నిర్మించారు",
+                research_analyst: "రీసెర్చ్ అనలిస్ట్",
+                vikram_role: "సర్వేలు మరియు డేటా విశ్లేషణను నిర్వహించారు",
+                content_creator: "కంటెంట్ క్రియేటర్",
+                sneha_role: "విద్యాపరమైన పదార్థాలు మరియు ప్రెజెంటేషన్లను అభివృద్ధి చేశారు",
+                photographer: "ఫోటోగ్రాఫర్ & వీడియోగ్రాఫర్",
+                arun_role: "ప్రాజెక్ట్ కార్యకలాపాలను డాక్యుమెంట్ చేశారు మరియు విజువల్ కంటెంట్ను సృష్టించారు",
+                volunteer_coordinator: "స్వచ్ఛందకారుల కోఆర్డినేటర్",
+                divya_role: "స్వచ్ఛందకారుల షెడ్యూల్స్ మరియు బాధ్యతలను నిర్వహించారు",
+                translator: "ట్రాన్స్లేటర్ & లోకల్ కోఆర్డినేటర్",
+                kiran_role: "స్థానిక కమ్యూనిటీతో కమ్యూనికేషన్ను సులభతరం చేశారు",
+                
+                // Impact section
+                impact_outcome: "ప్రభావం & ఫలితం",
+                households_visited: "గృహాలు సందర్శించబడ్డాయి",
+                students_trained: "విద్యార్థులు శిక్షణ పొందారు",
+                adoption_rate: "దత్తత రేటు",
+                before_after: "క్యాంపెయిన్ ముందు vs తర్వాత",
+                impact_description: "క్యాంపెయిన్ తర్వాత, 80% గ్రామవాసులు రోజువారీ చేతులు కడుకోవడం పద్ధతులను అవలంబించారు మరియు ప్లాస్టిక్ వేస్ట్ ఉపయోగాన్ని 45% తగ్గించారు. డాంగ్యు వలన కలిగే వ్యాధుల గురించి అవగాహన గణనీయంగా పెరిగింది.",
+                before: "ముందు",
+                after: "తర్వాత",
+                
+                // Feedback section
+                feedback_testimonials: "ఫీడ్బ్యాక్ & సాక్ష్యాలు",
+                testimonial1: "శుభ్రమైన నీరు మరియు సరైన వేస్ట్ డిస్పోజల్ యొక్క ప్రాముఖ్యతను అర్థం చేసుకోవడంలో ఈ ప్రోగ్రామ్ మాకు సహాయపడింది. మా పిల్లలు ఇప్పుడు క్రమం తప్పకుండా చేతులు కడుకుంటున్నారు, మరియు మా కుటుంబంలో అనారోగ్యాలు తక్కువగా గమనించాము.",
+                kondapuram_villager: "కొండాపురం గ్రామవాసి",
+                testimonial2: "నిఖిల్ బృందం అత్యుత్తమ కమ్యూనిటీ నిశ్చితార్థాన్ని ప్రదర్శించారు మరియు వారి బాగా ప్లాన్ చేసిన పరిశుభ్రత అవగాహన క్యాంపెయిన్ ద్వారా అర్థవంతమైన ప్రభావాన్ని సృష్టించారు. ప్రాక్టికల్ అప్రోచ్ క్లిష్టమైన భావనలను అర్థం చేసుకోవడానికి సులభతరం చేసింది.",
+                faculty_coordinator: "ఫ్యాకల్టీ కోఆర్డినేటర్",
+                testimonial3: "అవగాహన సెషన్ల తర్వాత గ్రామం చుట్టూ పరిశుభ్రతలో గణనీయమైన మెరుగుదలను మేము గమనించాము. బృందం యొక్క ప్రయత్నాలు కమ్యూనిటీ ఆరోగ్యం మరియు పర్యావరణ consciousnessలో నిజమైన వ్యత్యాసాన్ని తీసుకువచ్చాయి.",
+                village_leader: "గ్రామ నాయకుడు",
+                
+                // Contact section
+                contact_about: "సంప్రదించండి / నా గురించి",
+                about_me: "నా గురించి",
+                about_description: "రియల్-వరల్డ్ ప్రాజెక్ట్లు మరియు కమ్యూనిటీ పని ద్వారా సామాజిక ప్రభావాన్ని సృష్టించడానికి టెక్నాలజీని ఉపయోగించడంపై ఆసక్తి. కమ్యూనిటీలను రూపాంతరం చేయడంలో విద్య మరియు అవగాహన శక్తిపై నేను నమ్మకం కలిగి ఉన్నాను.",
+                student_info: "బి.టెక్ ఐటీ విద్యార్థి | ఎన్బికెఆర్ ఇన్స్టిట్యూట్ ఆఫ్ సైన్స్ & టెక్నాలజీ",
+                email: "ఇమెయిల్",
+                phone: "ఫోన్",
+                portfolio: "పోర్ట్ఫోలియో",
+                get_in_touch: "సంప్రదించండి",
+                form_description: "మీ నుండి వినడానికి నేను ఆసక్తి కలిగి ఉన్నాను. నాకు ఒక సందేశం పంపండి!",
+                name_placeholder: "మీ పేరు నమోదు చేయండి",
+                email_placeholder: "మీ ఇమెయిల్ నమోదు చేయండి",
+                subject_placeholder: "విషయం నమోదు చేయండి",
+                message_placeholder: "మీ సందేశాన్ని టైప్ చేయండి...",
+                send_message: "సందేశం పంపండి",
+                
+                // Footer
+                footer_text: "కమ్యూనిటీ నిశ్చితార్థం ద్వారా వ్యత్యాసాన్ని తీసుకువస్తున్నాము"
+            }
+        };
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = document.body.classList.contains('light-mode') 
+                    ? 'rgba(240, 244, 248, 0.95)' 
+                    : 'rgba(10, 10, 26, 0.95)';
+                nav.style.backdropFilter = 'blur(15px)';
+            } else {
+                nav.style.background = document.body.classList.contains('light-mode') 
+                    ? 'rgba(240, 244, 248, 0.9)' 
+                    : 'rgba(10, 10, 26, 0.85)';
+            }
+        });
+
+        // Settings dropdown toggle
+        const settingsBtn = document.querySelector('.settings-btn');
+        const settingsMenu = document.querySelector('.settings-menu');
+        
+        settingsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            settingsMenu.classList.toggle('active');
+        });
+
+        // Close settings menu when clicking outside
+        document.addEventListener('click', function() {
+            settingsMenu.classList.remove('active');
+            document.querySelector('.language-options').classList.remove('active');
+        });
+
+        // Language toggle
+        const languageToggle = document.getElementById('language-toggle');
+        const languageOptions = document.querySelector('.language-options');
+        
+        languageToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageOptions.classList.toggle('active');
+        });
+
+        // Language selection
+        const languageOptionsBtns = document.querySelectorAll('.language-option');
+        let currentLang = 'en';
+        
+        languageOptionsBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                setLanguage(lang);
+                
+                // Update active language button
+                languageOptionsBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Close language options
+                languageOptions.classList.remove('active');
+            });
+        });
+
+        // Function to set language
+        function setLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.setAttribute('lang', lang);
+        }
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            
+            // Update button text based on current mode
+            const themeText = document.querySelector('#theme-toggle span');
+            if (document.body.classList.contains('light-mode')) {
+                themeText.setAttribute('data-i18n', 'dark_mode');
+                if (currentLang === 'en') {
+                    themeText.textContent = 'Dark Mode';
+                } else {
+                    themeText.textContent = 'డార్క్ మోడ్';
+                }
+            } else {
+                themeText.setAttribute('data-i18n', 'light_mode');
+                if (currentLang === 'en') {
+                    themeText.textContent = 'Light Mode';
+                } else {
+                    themeText.textContent = 'లైట్ మోడ్';
+                }
+            }
+        });
+
+        // Gallery Carousel
+        const carousel = document.getElementById('carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        let currentSlide = 0;
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        });
+        
+        // Indicator click
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }, 5000);
+
+        // Animate chart bars on scroll
+        const animateBars = () => {
+            const chartBars = document.querySelectorAll('.chart-bar');
+            chartBars.forEach(bar => {
+                const barTop = bar.getBoundingClientRect().top;
+                if (barTop < window.innerHeight - 100) {
+                    bar.style.height = bar.style.height;
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateBars);
+
+        // Google Maps functionality
+        (function(){
+            const destFull = "Kondapuram Village, Vakadu Mandal, Tirupati District, Andhra Pradesh, India";
+            const card = document.getElementById('kondapuramCard');
+            const btn = document.getElementById('openRouteBtn');
+            const statusEl = document.getElementById('status');
+
+            function setStatus(msg, show=true){
+                if(!statusEl) return;
+                statusEl.textContent = msg;
+                statusEl.hidden = !show;
+            }
+
+            // Build Google Maps URL (web) that shows directions.
+            function buildMapsUrl(originLatLng){
+                const destination = encodeURIComponent(destFull);
+                // Use Google Maps Directions API link format (works in browser and typically launches Maps app on mobile)
+                if(originLatLng){
+                    return `https://www.google.com/maps/dir/?api=1&origin=${originLatLng}&destination=${destination}&travelmode=driving`;
+                } else {
+                    // If we don't have origin, letting Maps pick current location by leaving origin out:
+                    return `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=driving`;
+                }
+            }
+
+            // Try to get geolocation and open maps.
+            function openRoute(){
+                setStatus("Requesting location from your device...");
+                if(!navigator.geolocation){
+                    setStatus("Geolocation not supported. Opening route in Google Maps.", true);
+                    window.open(buildMapsUrl(null), '_blank');
+                    return;
+                }
+
+                // Ask for high accuracy if available, set a reasonable timeout
+                navigator.geolocation.getCurrentPosition(function(pos){
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    const origin = `${lat},${lng}`;
+                    setStatus("Location found. Opening Google Maps...", true);
+                    const url = buildMapsUrl(origin);
+                    // Open in new tab/window - on mobile the OS usually suggests the Maps app
+                    window.open(url, '_blank');
+                }, function(err){
+                    // Permission denied or failed - fallback to destination-only URL (Maps will use device current location)
+                    console.warn('Geolocation error:', err);
+                    let message;
+                    switch(err.code){
+                        case 1: message = "Location permission denied. Opening Maps — you can allow location for a direct route."; break;
+                        case 2: message = "Unable to determine location. Opening Maps."; break;
+                        case 3: message = "Location request timed out. Opening Maps."; break;
+                        default: message = "Could not get location. Opening Maps.";
+                    }
+                    setStatus(message, true);
+                    window.open(buildMapsUrl(null), '_blank');
+                }, {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                });
+            }
+
+            // Make both the card and button clickable / keyboard accessible
+            card.addEventListener('click', openRoute);
+            btn.addEventListener('click', function(evt){
+                evt.stopPropagation(); // avoid double handling
+                openRoute();
+            });
+
+            // keyboard support: Enter/Space to trigger
+            card.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' || e.key === ' '){
+                    e.preventDefault();
+                    openRoute();
+                }
+            });
+
+            // optional: hide status after a few seconds
+            setInterval(()=>{
+                if(statusEl && !statusEl.hidden){
+                    setTimeout(()=>{ statusEl.hidden = true; }, 6000);
+                }
+            }, 10000);
+
+        })();
+    </script>
+</body>
+</html>

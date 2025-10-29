@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Health & Hygiene Awareness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-dark: #0a0a1a;
+            --primary-blue: #1a1a2e;
+            --accent-blue: #16213e;
+            --accent-teal: #0d9488;
+            --light-teal: #14b8a6;
+            --glow-blue: #3b82f6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --nav-glow: rgba(59, 130, 246, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, #0f172a 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background: var(--light-teal);
+            color: var(--primary-dark);
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
+        }
+
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(26, 26, 46, 0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .banner h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .banner p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .institution-info {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .institution-info h3 {
+            color: var(--light-teal);
+            margin-bottom: 15px;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(59, 130, 246, 0.05));
+            z-index: -1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(20, 184, 166, 0.2);
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(20, 184, 166, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.6);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Topics Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .topic-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(59, 130, 246, 0.05));
+            z-index: -1;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(20, 184, 166, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 3rem;
+            color: var(--light-teal);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(20, 184, 166, 0.5));
+        }
+
+        .topic-card h3 {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* Steps Grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .step-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(59, 130, 246, 0.05));
+            z-index: -1;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(20, 184, 166, 0.2);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--light-teal), var(--glow-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.5);
+            font-size: 1.2rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .close-btn:hover {
+            background: var(--light-teal);
+            color: var(--primary-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .modal-image {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 150px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .image-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .download-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            color: var(--primary-dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(20, 184, 166, 0.6);
+        }
+
+        /* Location Section */
+        .location-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .location-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .map-container {
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 1px solid var(--glass-border);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Background Icons */
+        .bg-icon {
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.03;
+            z-index: -1;
+            filter: blur(1px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .topics-grid, .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 25px;
+            }
+            
+            .banner {
+                padding: 100px 15px 60px;
+            }
+            
+            section {
+                padding: 60px 15px;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="bg-icon floating" style="top: 10%; left: 5%;">🧼</div>
+        <div class="bg-icon floating" style="top: 20%; right: 10%; animation-delay: 1s;">🩺</div>
+        <div class="bg-icon floating" style="bottom: 15%; left: 15%; animation-delay: 2s;">🚰</div>
+        
+        <div class="container">
+            <div class="banner-content fade-in">
+                <h1>Awareness on Health and Hygiene</h1>
+                <p>Community Service Project by Department of IT & AI&DS</p>
+                
+                <div class="institution-info">
+                    <h3>N.B.K.R INSTITUTE OF SCIENCE & TECHNOLOGY</h3>
+                    <p>Vidyanagar (AUTONOMOUS)</p>
+                    
+                    <div class="team-members">
+                        <div class="team-member">D.Nikhil-22kb1a1212</div>
+                        <div class="team-member">G.Neha-22kb1a1214</div>
+                        <div class="team-member">G.Mohansai-22kb1a1215</div>
+                        <div class="team-member">J.Sumanth-22kb1a1216</div>
+                        <div class="team-member">K.Manohar-22kb1a1217</div>
+                        <div class="team-member">Y.Narasimhulu-22kb1a1264</div>
+                        <div class="team-member">K.Srivani-22kb1a1220</div>
+                        <div class="team-member">K.Shasank-22kb1a1221</div>
+                        <div class="team-member">K.Sahithi-22kb1a1222</div>
+                    </div>
+                    
+                    <p style="margin-top: 20px;">Under The Guidance of <strong>Mr.M.Sivapratap Reddy</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objective Section -->
+    <section id="objective">
+        <div class="container">
+            <h2>Project Objective</h2>
+            
+            <div class="glass-card fade-in">
+                <h3>Our Mission</h3>
+                <p>To educate and empower the residents of Kondapuram village with essential knowledge and practices related to health and hygiene, fostering a cleaner, healthier, and more sustainable community environment.</p>
+                
+                <h3>Specific Goals</h3>
+                <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                    <li>Increase awareness about personal hygiene practices</li>
+                    <li>Promote proper handwashing techniques</li>
+                    <li>Educate about safe drinking water practices</li>
+                    <li>Encourage proper waste disposal and plastic reduction</li>
+                    <li>Improve food hygiene and safety practices</li>
+                    <li>Prevent mosquito-borne diseases</li>
+                    <li>Enhance road cleanliness and community sanitation</li>
+                    <li>Increase utilization of village hospital facilities</li>
+                </ul>
+                
+                <p>Through interactive sessions, demonstrations, and community engagement, we aim to create lasting behavioral changes that will improve the overall health and wellbeing of Kondapuram villagers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Covered Section -->
+    <section id="topics">
+        <div class="container">
+            <h2>Topics Covered</h2>
+            
+            <div class="topics-grid">
+                <div class="topic-card fade-in" data-topic="handwashing">
+                    <div class="topic-icon">🧼</div>
+                    <h3>Handwashing Steps & Importance</h3>
+                    <p>Learn proper handwashing techniques and why it matters</p>
+                </div>
+                
+                <div class="topic-card fade-in" data-topic="water">
+                    <div class="topic-icon">💧</div>
+                    <h3>Clean Drinking Water Importance</h3>
+                    <p>Understanding water safety and purification methods</p>
+                </div>
+                
+                <div class="topic-card fade-in" data-topic="waste">
+                    <div class="topic-icon">🗑️</div>
+                    <h3>Waste Disposal & Plastic Reduction</h3>
+                    <p>Proper waste management and reducing plastic usage</p>
+                </div>
+                
+                <div class="topic-card fade-in" data-topic="food">
+                    <div class="topic-icon">🍽️</div>
+                    <h3>Food Hygiene & Safety Practices</h3>
+                    <p>Safe food handling, preparation and storage</p>
+                </div>
+                
+                <div class="topic-card fade-in" data-topic="mosquito">
+                    <div class="topic-icon">🦟</div>
+                    <h3>Mosquito Prevention & Health Tips</h3>
+                    <p>Preventing mosquito breeding and related diseases</p>
+                </div>
+                
+                <div class="topic-card fade-in" data-topic="road">
+                    <div class="topic-icon">🛣️</div>
+                    <h3>Road Cleanliness</h3>
+                    <p>Maintaining clean roads and public spaces</p>
+                </div>
+                
+                <div class="topic-card fade-in" data-topic="hospital">
+                    <div class="topic-icon">🏥</div>
+                    <h3>Village Hospital Facilities</h3>
+                    <p>Understanding and utilizing local healthcare services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Followed Section -->
+    <section id="steps">
+        <div class="container">
+            <h2>Steps Followed</h2>
+            
+            <div class="steps-grid">
+                <div class="step-card fade-in" data-step="1">
+                    <div class="step-number">1</div>
+                    <h3>Surveyed Local Awareness Level</h3>
+                    <p>Understanding current practices and knowledge gaps</p>
+                </div>
+                
+                <div class="step-card fade-in" data-step="2">
+                    <div class="step-number">2</div>
+                    <h3>Prepared Posters & Leaflets</h3>
+                    <p>Creating educational materials in local language</p>
+                </div>
+                
+                <div class="step-card fade-in" data-step="3">
+                    <div class="step-number">3</div>
+                    <h3>Conducted Awareness Sessions</h3>
+                    <p>Interactive sessions with demonstrations</p>
+                </div>
+                
+                <div class="step-card fade-in" data-step="4">
+                    <div class="step-number">4</div>
+                    <h3>Distributed Hygiene Kits</h3>
+                    <p>Providing essential hygiene supplies</p>
+                </div>
+                
+                <div class="step-card fade-in" data-step="5">
+                    <div class="step-number">5</div>
+                    <h3>Follow-up Visit for Feedback</h3>
+                    <p>Assessing impact and gathering feedback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h2>Project Documentation</h2>
+            
+            <div class="download-card fade-in">
+                <h3>Download Complete Project Report</h3>
+                <p>Get the full documentation of our Health & Hygiene Awareness project including methodology, findings, and outcomes.</p>
+                
+                <div class="download-options">
+                    <a href="images/doc(boys).pdf" target="_blank" class="download-btn">
+                        <i class="fas fa-file-pdf"></i> Open PDF Document
+                    </a>
+                    
+                    <a href="images/doc(boys).pdf" download="Health_Hygiene_Awareness_Project_Report.pdf" class="download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    
+                    <a href="index.html" class="download-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                    If the document doesn't open, please check if you have a PDF viewer installed or try the download option.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <h2>Kondapuram Village Location</h2>
+            
+            <div class="location-card fade-in">
+                <h3>About Kondapuram Village</h3>
+                <p>Kondapuram is a village in Andhra Pradesh, India, where we conducted our health and hygiene awareness project. The village is located in a rural area with approximately 250 households.</p>
+                
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.305020297675!2d79.86701927450636!3d13.991583389479687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d7b5e36f9e6a1%3A0x3e7e7f7dff61e5a5!2sKondapuram%2C%20Vakadu%20Mandal%2C%20Tirupati%20District%2C%20Andhra%20Pradesh%2C%20India!5e0!3m2!1sen!2sin!4v1730191200000!5m2!1sen!2sin"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <p>The project was implemented across various locations in the village including the community center, local schools, and residential areas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Modals -->
+    <div class="modal" id="handwashing-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Handwashing Steps & Importance</h2>
+            
+            <h3>Why Handwashing Matters</h3>
+            <p>Proper handwashing is one of the most effective ways to prevent the spread of germs and infections. It can reduce respiratory illnesses by 16-21% and diarrheal diseases by 23-40%.</p>
+            
+            <h3>Proper Handwashing Steps</h3>
+            <ol style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Wet hands with clean, running water</li>
+                <li>Apply soap and lather well</li>
+                <li>Scrub all surfaces of hands - palms, back, between fingers, under nails</li>
+                <li>Continue scrubbing for at least 20 seconds</li>
+                <li>Rinse well under running water</li>
+                <li>Dry hands using a clean towel or air dry</li>
+            </ol>
+            
+            <h3>When to Wash Hands</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px;">
+                <li>Before, during, and after preparing food</li>
+                <li>Before eating</li>
+                <li>After using the toilet</li>
+                <li>After coughing, sneezing, or blowing your nose</li>
+                <li>After touching animals or animal waste</li>
+                <li>After handling garbage</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="water-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Clean Drinking Water Importance</h2>
+            
+            <h3>Why Clean Water Matters</h3>
+            <p>Access to clean drinking water is essential for health and wellbeing. Contaminated water can transmit diseases such as diarrhea, cholera, dysentery, typhoid, and polio.</p>
+            
+            <h3>Water Purification Methods</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>Boiling:</strong> Most effective method to kill pathogens</li>
+                <li><strong>Chlorination:</strong> Using chlorine tablets or liquid to disinfect water</li>
+                <li><strong>Filtration:</strong> Using ceramic, sand, or cloth filters</li>
+                <li><strong>Solar Disinfection:</strong> Using sunlight to kill microorganisms</li>
+                <li><strong>Sedimentation:</strong> Allowing particles to settle before use</li>
+            </ul>
+            
+            <h3>Safe Water Storage</h3>
+            <p>Store water in clean, covered containers. Use a clean ladle or tap to withdraw water. Never dip hands or unclean objects into stored water.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="waste-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Waste Disposal & Plastic Reduction</h2>
+            
+            <h3>Importance of Proper Waste Management</h3>
+            <p>Proper waste disposal prevents the spread of diseases, reduces pollution, and protects the environment. It also helps in maintaining cleanliness and hygiene in the community.</p>
+            
+            <h3>Waste Segregation Methods</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>Biodegradable Waste:</strong> Food scraps, vegetable peels, garden waste</li>
+                <li><strong>Non-Biodegradable Waste:</strong> Plastic, glass, metal, rubber</li>
+                <li><strong>Hazardous Waste:</strong> Batteries, chemicals, medical waste</li>
+            </ul>
+            
+            <h3>Plastic Reduction Tips</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px;">
+                <li>Use cloth bags instead of plastic bags</li>
+                <li>Avoid single-use plastic items</li>
+                <li>Carry your own water bottle</li>
+                <li>Choose products with minimal packaging</li>
+                <li>Reuse plastic containers when possible</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="food-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Food Hygiene & Safety Practices</h2>
+            
+            <h3>Why Food Safety Matters</h3>
+            <p>Proper food handling and preparation prevent foodborne illnesses that can cause serious health issues, especially in children and the elderly.</p>
+            
+            <h3>Key Food Safety Practices</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>Clean:</strong> Wash hands, utensils, and surfaces often</li>
+                <li><strong>Separate:</strong> Keep raw meat separate from other foods</li>
+                <li><strong>Cook:</strong> Cook foods to proper temperatures</li>
+                <li><strong>Chill:</strong> Refrigerate perishable foods promptly</li>
+            </ul>
+            
+            <h3>Safe Food Storage</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px;">
+                <li>Store raw and cooked foods separately</li>
+                <li>Keep food covered to protect from insects and dust</li>
+                <li>Use refrigerated storage for perishable items</li>
+                <li>Check expiration dates before consumption</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="mosquito-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Mosquito Prevention & Health Tips</h2>
+            
+            <h3>Why Mosquito Control is Important</h3>
+            <p>Mosquitoes transmit serious diseases like malaria, dengue, chikungunya, and Zika virus. Preventing mosquito breeding reduces the risk of these diseases.</p>
+            
+            <h3>Mosquito Prevention Methods</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Remove standing water where mosquitoes breed</li>
+                <li>Use mosquito nets while sleeping</li>
+                <li>Install screens on windows and doors</li>
+                <li>Wear long-sleeved clothing during peak mosquito hours</li>
+                <li>Use mosquito repellents when outdoors</li>
+            </ul>
+            
+            <h3>Common Mosquito Breeding Sites</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px;">
+                <li>Stagnant water in containers, tires, or pots</li>
+                <li>Clogged drains and gutters</li>
+                <li>Water collected in discarded items</li>
+                <li>Puddles and waterlogged areas</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="road-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Road Cleanliness</h2>
+            
+            <h3>Importance of Clean Roads</h3>
+            <p>Clean roads and public spaces prevent the spread of diseases, reduce pollution, and create a pleasant living environment. They also prevent waterlogging and mosquito breeding.</p>
+            
+            <h3>Community Cleanliness Practices</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Dispose of waste in designated bins only</li>
+                <li>Participate in community cleaning drives</li>
+                <li>Report illegal dumping to local authorities</li>
+                <li>Educate others about the importance of cleanliness</li>
+            </ul>
+            
+            <h3>Benefits of Clean Public Spaces</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px;">
+                <li>Reduces risk of diseases and infections</li>
+                <li>Prevents mosquito breeding grounds</li>
+                <li>Improves mental wellbeing and community pride</li>
+                <li>Attracts tourism and economic opportunities</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="hospital-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Village Hospital Facilities</h2>
+            
+            <h3>Importance of Healthcare Access</h3>
+            <p>Access to healthcare facilities ensures timely medical attention, preventive care, and treatment for illnesses, contributing to overall community health and wellbeing.</p>
+            
+            <h3>Services Available at Village Hospital</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Basic medical consultations and treatments</li>
+                <li>Immunization services for children and adults</li>
+                <li>Maternal and child healthcare</li>
+                <li>First aid and emergency care</li>
+                <li>Health education and awareness programs</li>
+            </ul>
+            
+            <h3>How to Utilize Healthcare Services</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px;">
+                <li>Register with the local health center</li>
+                <li>Keep track of immunization schedules</li>
+                <li>Attend regular health check-ups</li>
+                <li>Participate in health awareness programs</li>
+                <li>Seek medical help early when symptoms appear</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Step Modals -->
+    <div class="modal" id="step1-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Step 1: Surveyed Local Awareness Level</h2>
+            
+            <p>We conducted initial surveys to understand the current hygiene practices and awareness levels in Kondapuram village through door-to-door visits and questionnaires.</p>
+            
+            <h3>Survey Methodology</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Structured questionnaires with both closed and open-ended questions</li>
+                <li>Direct observation of hygiene practices</li>
+                <li>Focus group discussions with community members</li>
+                <li>Interviews with local health workers and village leaders</li>
+            </ul>
+            
+            <h3>Key Findings</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>65% of households practiced handwashing before meals</li>
+                <li>Only 40% used soap for handwashing</li>
+                <li>70% boiled drinking water</li>
+                <li>Plastic waste management was a significant concern</li>
+                <li>Awareness about mosquito-borne diseases was limited</li>
+            </ul>
+            
+            <h3>Survey Images</h3>
+            <div class="modal-images">
+                <div class="modal-image">
+                    <img src="images/nikhil image1.jpg" alt="Survey in village">
+                </div>
+                <div class="modal-image">
+                    <img src="images/mohansai 3.jpg" alt="Community discussion">
+                </div>
+                <div class="modal-image">
+                    <img src="images/manohar 7.jpg" alt="Data collection">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="step2-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Step 2: Prepared Posters & Leaflets</h2>
+            
+            <p>We created educational materials in the local language with visual aids for better understanding, using culturally appropriate illustrations and simple language.</p>
+            
+            <h3>Materials Developed</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Illustrated posters showing proper handwashing techniques</li>
+                <li>Leaflets on safe water handling and storage</li>
+                <li>Visual guides on waste segregation and management</li>
+                <li>Information brochures on preventing mosquito breeding</li>
+                <li>Food safety charts for household kitchens</li>
+            </ul>
+            
+            <h3>Design Approach</h3>
+            <p>All materials were designed with high visual content and minimal text to ensure understanding across literacy levels. We used local symbols and contexts to make the information relatable.</p>
+            
+            <h3>Poster Examples</h3>
+            <div class="modal-images">
+                <div class="modal-image">
+                    <img src="images/sleep.png" alt="Healthy sleep poster">
+                </div>
+                <div class="modal-image">
+                    <img src="images/walking.png" alt="Healthy walking poster">
+                </div>
+                <div class="modal-image">
+                    <img src="images/wash hands.png" alt="Washing hands poster">
+                </div>
+                <div class="modal-image">
+                    <img src="images/food.png" alt="Healthy food management">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="step3-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Step 3: Conducted Awareness Sessions</h2>
+            
+            <p>We organized interactive sessions in schools and community halls to demonstrate proper hygiene practices through role-plays, demonstrations, and group activities.</p>
+            
+            <h3>Session Locations</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Kondapuram Community Center</li>
+                <li>Local Government School</li>
+                <li>Anganwadi Centers</li>
+                <li>Village Square for community gatherings</li>
+            </ul>
+            
+            <h3>Session Activities</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Handwashing demonstrations with proper technique</li>
+                <li>Interactive games about hygiene practices</li>
+                <li>Role-plays on waste segregation</li>
+                <li>Group discussions on health topics</li>
+                <li>Q&A sessions with healthcare professionals</li>
+            </ul>
+            
+            <h3>Awareness Session Images</h3>
+            <div class="modal-images">
+                <div class="modal-image">
+                    <img src="images/girls boys group image 1.png" alt="Awareness session">
+                </div>
+                <div class="modal-image">
+                    <img src="images/group 6.jpg" alt="Community participation">
+                </div>
+                <div class="modal-image">
+                    <img src="images/group 9.jpg" alt="Interactive demonstration">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="step4-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Step 4: Distributed Hygiene Kits</h2>
+            
+            <p>We provided essential hygiene items including soap, sanitizer, toothpaste, and informational pamphlets to villagers with proper usage instructions.</p>
+            
+            <h3>Kit Contents</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Antibacterial soap bars</li>
+                <li>Hand sanitizer bottles</li>
+                <li>Toothpaste and toothbrushes</li>
+                <li>Nail clippers</li>
+                <li>Informational pamphlets in local language</li>
+                <li>Mosquito repellent coils</li>
+            </ul>
+            
+            <h3>Distribution Strategy</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Door-to-door distribution to ensure coverage</li>
+                <li>Distribution at community gatherings</li>
+                <li>Special sessions for school children</li>
+                <li>Demonstration of proper usage during distribution</li>
+            </ul>
+            
+            <h3>Distribution Images</h3>
+            <div class="modal-images">
+                <div class="modal-image">
+                    <img src="images/hygenic kit 1.png" alt="Kit distribution">
+                </div>
+                <div class="modal-image">
+                    <img src="images/hygenic kit 2.png" alt="Family receiving kit">
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="step5-modal">
+        <div class="modal-content">
+            <div class="close-btn">&times;</div>
+            <h2>Step 5: Follow-up Visit for Feedback</h2>
+            
+            <p>We returned to the village to assess the impact of our program and gather feedback for future improvements, measuring behavioral changes and knowledge retention.</p>
+            
+            <h3>Feedback Collection Methods</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>Structured interviews with villagers</li>
+                <li>Observation of hygiene practices</li>
+                <li>Focus group discussions</li>
+                <li>Feedback forms in simple local language</li>
+            </ul>
+            
+            <h3>Key Outcomes</h3>
+            <ul style="color: var(--text-muted); margin-left: 20px; margin-bottom: 20px;">
+                <li>85% of households reported improved handwashing practices</li>
+                <li>Waste segregation increased by 60%</li>
+                <li>75% of families adopted water purification methods</li>
+                <li>Significant reduction in visible waste in public spaces</li>
+                <li>Increased utilization of village health facilities</li>
+            </ul>
+            
+            <h3>Follow-up Visit Images</h3>
+            <div class="modal-images">
+                <div class="modal-image">
+                    <img src="images/nikhil image1.jpg" alt="Follow-up discussion">
+                </div>
+                <div class="modal-image">
+                    <img src="images/manohar 3.jpg" alt="Feedback collection">
+                </div>
+                <div class="modal-image">
+                    <img src="images/riyaz 7.jpg" alt="Community celebration">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal">
+        <div class="image-close-btn">&times;</div>
+        <div class="image-modal-content">
+            <img src="" alt="Enlarged view">
+        </div>
+    </div>
+
+    <script>
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+
+        // Topic card click handlers
+        document.querySelectorAll('.topic-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const topic = this.getAttribute('data-topic');
+                const modal = document.getElementById(`${topic}-modal`);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Step card click handlers
+        document.querySelectorAll('.step-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const step = this.getAttribute('data-step');
+                const modal = document.getElementById(`step${step}-modal`);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal handlers
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.closest('.modal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modal when clicking outside content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Image modal functionality
+        const imageModal = document.querySelector('.image-modal');
+        const imageModalContent = document.querySelector('.image-modal-content img');
+        const imageCloseBtn = document.querySelector('.image-close-btn');
+
+        document.querySelectorAll('.modal-image img').forEach(img => {
+            img.addEventListener('click', function() {
+                imageModalContent.src = this.src;
+                imageModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        imageCloseBtn.addEventListener('click', function() {
+            imageModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Document opening functionality
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // For PDF links, we'll let the browser handle them naturally
+                // The target="_blank" will open in new tab, download attribute will trigger download
+                console.log('Document link clicked:', this.href);
+            });
+        });
+    </script>
+</body>
+</html>

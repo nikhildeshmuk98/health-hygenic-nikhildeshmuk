@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Health & Hygiene Awareness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a0a1a;
+            --primary-blue: #1a1a2e;
+            --accent-blue: #16213e;
+            --accent-teal: #0d9488;
+            --light-teal: #14b8a6;
+            --glow-blue: #3b82f6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --nav-glow: rgba(59, 130, 246, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, #0f172a 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background: var(--light-teal);
+            color: var(--primary-dark);
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
+        }
+
+        .banner {
+            background: linear-gradient(rgba(10, 10, 26, 0.85), rgba(26, 26, 46, 0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .banner h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .banner p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(59, 130, 246, 0.05));
+            z-index: -1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(20, 184, 166, 0.2);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(59, 130, 246, 0.05));
+            z-index: -1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(20, 184, 166, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-info h3 {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .gallery-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .gallery-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--light-teal);
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: var(--light-teal);
+            color: var(--primary-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, var(--light-teal), var(--glow-blue));
+            color: var(--primary-dark);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(20, 184, 166, 0.4);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(20, 184, 166, 0.6);
+        }
+
+        .image-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .image-info h3 {
+            color: var(--light-teal);
+            margin-bottom: 10px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-icon {
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.03;
+            z-index: -1;
+            filter: blur(1px);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1100px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .modal-content {
+                padding: 25px;
+            }
+            
+            .banner {
+                padding: 100px 15px 60px;
+            }
+            
+            section {
+                padding: 60px 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <section class="banner">
+        <div class="bg-icon floating" style="top: 10%; left: 5%;">🧼</div>
+        <div class="bg-icon floating" style="top: 20%; right: 10%; animation-delay: 1s;">🩺</div>
+        <div class="bg-icon floating" style="bottom: 15%; left: 15%; animation-delay: 2s;">🚰</div>
+        
+        <div class="container">
+            <div class="banner-content fade-in">
+                <h1>Health & Hygiene Awareness Gallery</h1>
+                <p>Capturing moments from our community service project in Kondapuram Village</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Project Moments</h2>
+            
+            <div class="gallery-grid">
+                <div class="glass-card gallery-item fade-in" data-image="1">
+                    <img src="images/girls boys group image 1.png" alt="Community Session" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        
+                        <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="2">
+                    <img src="images/group 3.jpg" alt="Handwashing Demonstration" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        
+                        <h3>Kondapuram Village, Andhra Pradesh</h3>
+                      
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="3">
+                    <img src="images/group 10.jpg" alt="Team Discussion" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        
+                        <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="4">
+                    <img src="images/nikhil image1.jpg" alt="Cleanliness Drive" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        
+                        <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="5">
+                      <img src="images/manohar 1.jpg" alt="Cleanliness Drive" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                            <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="6">
+                    <img src="images/riyaz 6.jpg" alt="Health Checkup" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                         <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="7">
+                    <img src="images/mohansai 3.jpg" alt="Hygiene Kit Distribution" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                          <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="8">
+                    <img src="images/sheshank 3.jpg" alt="School Session" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                         <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="9">
+                    <img src="images/smiley 4.jpg" alt="Waste Management" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Kondapuram Village, Andhra Pradesh</h3>
+                    </div>
+                </div>
+                
+                <div class="glass-card gallery-item fade-in" data-image="10">
+                    <img src="images/nikhil image 2.jpg" alt="Team Photo" class="gallery-image">
+                    <div class="gallery-actions">
+                        <div class="action-btn view-btn" title="View Image">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <div class="action-btn download-btn" title="Download Image">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Project Team</h3>
+                        <p>Our dedicated volunteers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="image-modal">
+        <div class="modal-content">
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <img id="modal-img" src="" alt="" class="modal-image">
+            <div class="image-info">
+                <h3 id="modal-title">Image Title</h3>
+                <p id="modal-description">Image description goes here</p>
+                <p id="modal-location">Location details</p>
+            </div>
+            <div class="modal-actions">
+                <a href="#" class="modal-btn" id="download-modal-btn">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const imageData = {
+            1: {
+              
+                location: "Kondapuram, Andhra Pradesh, India | Lat 13.98649° | Long 80.019279°",
+                src: "images/girls boys group image 1.png"
+            },
+            2: {
+               
+                location: "MDR65, Kondapuram, Andhra Pradesh | Lat 13.987454° | Long 80.01959°",
+                src: "images/group 3.jpg"
+            },
+            3: {
+               
+                location: "Vakadu, Andhra Pradesh, India | Lat 13.987513° | Long 80.020017°",
+                src: "images/group 10.jpg"
+            },
+            4: {
+               
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/nikhil image1.jpg"
+            },
+            5: {
+               
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/manohar 1.jpg"
+            },
+            6: {
+               
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/riyaz 6.jpg"
+            },
+            7: {
+                
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/mohansai 3.jpg"
+            },
+            8: {
+               
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/sheshank 3.jpg"
+            },
+            9: {
+               
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/smiley 4.jpg"
+            },
+            10: {
+               
+                location: "Kondapuram Village, Andhra Pradesh",
+                src: "images/nikhil image 2.jpg"
+            }
+        };
+
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalLocation = document.getElementById('modal-location');
+        const downloadModalBtn = document.getElementById('download-modal-btn');
+        let currentImageId = null;
+
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const galleryItem = this.closest('.gallery-item');
+                const imageId = galleryItem.getAttribute('data-image');
+                openModal(imageId);
+            });
+        });
+
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const galleryItem = this.closest('.gallery-item');
+                const imageId = galleryItem.getAttribute('data-image');
+                downloadImage(imageId);
+            });
+        });
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const imageId = this.getAttribute('data-image');
+                openModal(imageId);
+            });
+        });
+
+        function openModal(imageId) {
+            currentImageId = imageId;
+            const image = imageData[imageId];
+            
+            if (image) {
+                modalImg.src = image.src;
+                modalTitle.textContent = image.title;
+                modalDescription.textContent = image.description;
+                modalLocation.textContent = image.location;
+                
+                downloadModalBtn.href = image.src;
+                downloadModalBtn.download = `health_hygiene_${imageId}.jpg`;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function downloadImage(imageId) {
+            const image = imageData[imageId];
+            if (image) {
+                const link = document.createElement('a');
+                link.href = image.src;
+                link.download = `health_hygiene_${imageId}.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
